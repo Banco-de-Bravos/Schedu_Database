@@ -1,0 +1,52 @@
+CREATE DATABASE db_shedu;
+use db_shedu;
+
+CREATE TABLE curso(
+id_curso int auto_increment, 
+nome_curso varchar(50),
+
+constraint pk_curso primary key(id_curso)
+);
+
+CREATE TABLE professor(
+matricula_prof int,
+email_prof varchar(70),
+nome_prof varchar(50),
+
+constraint pk_professor primary key(matricula_prof)
+);
+
+CREATE TABLE turma(
+id_turma int auto_increment,
+nome_turma varchar(50), 
+periodo_turma int,
+id_curso int,
+
+constraint pk_turma primary key(id_turma),
+constraint fk_turma_curso foreign key(id_curso) references curso(id_curso)
+);
+
+CREATE TABLE disciplina(
+id_disci int auto_increment,
+codigo int,
+nome_disci varchar(50),
+qtd__total_aulas int,
+hora_disci time,
+id_curso int,
+matricula_prof int,
+
+constraint pk_disciplina primary key(id_disci),
+constraint fk_disciplina_curso foreign key(id_curso) references curso(id_curso),
+constraint fk_disciplina_professor foreign key(matricula_prof) references professor(matricula_prof)
+);
+
+CREATE TABLE grade(
+id_grade int auto_increment,
+id_disci int, 
+id_turma int,
+
+constraint pk_grade primary key(id_grade),
+constraint fk_disciplina_grade foreign key(id_disci) references disciplina(id_disci),
+constraint fk_grade_turma foreign key(id_turma) references turma(id_turma)
+);
+
