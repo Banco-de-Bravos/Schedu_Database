@@ -2,4 +2,4 @@
 
 Modelagem do banco de dados Schedu
 
-!ModelagemBD modelagem_banco_shedu.png
+Shedu_Database/modelagem_banco_shedu.png
